@@ -34,6 +34,13 @@ export interface NodeStyleState {
 }
 
 export interface HistoryState {
+	nodeHistory: {
+		[key: string]: {
+			past: any[];
+			present: any;
+			future: any[];
+		};
+	};
 	past: any[];
 	present: any | null;
 	future: any[];

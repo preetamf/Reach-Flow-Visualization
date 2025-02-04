@@ -11,8 +11,8 @@ const NodeUndoRedoControls: React.FC<NodeUndoRedoControlsProps> = ({ selectedNod
 	const { nodeHistory } = useAppSelector((state: RootState) => state.history as HistoryState);
 
 	const selectedNodeHistory = selectedNodeId ? nodeHistory[selectedNodeId] : null;
-	const canUndo = selectedNodeHistory?.past.length > 0;
-	const canRedo = selectedNodeHistory?.future.length > 0;
+	const canUndo = (selectedNodeHistory?.past?.length || 0) > 0;
+	const canRedo = (selectedNodeHistory?.future?.length || 0) > 0;
 
 	const handleNodeUndo = useCallback(() => {
 		if (selectedNodeId) {

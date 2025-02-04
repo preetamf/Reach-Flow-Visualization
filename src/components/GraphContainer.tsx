@@ -52,7 +52,7 @@ const GraphContainer: React.FC = () => {
 		dispatch(saveState({ nodes, edges, action: 'INITIAL_STATE' }));
 	}, []);
 
-	const onNodeDragStart = useCallback((event: React.MouseEvent, node: FlowNode) => {
+	const onNodeDragStart = useCallback((_event: React.MouseEvent, node: FlowNode) => {
 		dragStateRef.current = {
 			nodeId: node.id,
 			startPosition: { ...node.position },
@@ -60,7 +60,7 @@ const GraphContainer: React.FC = () => {
 	}, []);
 
 	const onNodeDragStop = useCallback(
-		(event: React.MouseEvent, node: FlowNode) => {
+		(_event: React.MouseEvent, node: FlowNode) => {
 			// Only save state if the position actually changed
 			if (
 				dragStateRef.current.nodeId === node.id &&
